@@ -54,7 +54,8 @@ $ids_array = array(); // we'll store all user ids in this to reduce DB calls
     $cutoff = 5000;
 
 // Put all the userid information into an array so their "friends" (those they are following
-// can be pulled from the twitter API.
+// can be pulled from the twitter API.) 15 calls of 5000 per 15 min
+// https://dev.twitter.com/rest/reference/get/friends/ids
 
 // IF YOU NEED TO RESTART, COMMENT OUT EVERYTHING ABOVE HERE AND RESTART CODE
 
@@ -199,8 +200,8 @@ $ids_array = array(); // we'll store all user ids in this to reduce DB calls
 
         $call++; $curr++;
 
-        if ($call == 15) {
-            $call = 0;
+        if ($call > 900) {
+            $call = 1;
             echo "Pause before starting $curr";
             sleep(15.1*60);
         }
