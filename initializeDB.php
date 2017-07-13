@@ -36,7 +36,6 @@
 
 
 // Initial variables ---------------------------------------------------------------------------
-
     $ids_array = array(); // we'll store all user ids in this to reduce DB calls
 
 
