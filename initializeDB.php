@@ -55,7 +55,7 @@
 
     $user_id        = $obj['id_str'];
     $username       = $obj['screen_name'];
-    $name           = addslashes($obj['name']);
+    $name           = addslashes(substr($obj['name'], 0, 49));
     $descrip        = addslashes($obj['description']);
     $followers      = $obj['followers_count'];
     $friends        = $obj['friends_count'];
@@ -100,7 +100,7 @@
         foreach($tweeps as $tweep) {
             $user_id    = $tweep['id_str'];
             $username   = $tweep['screen_name'];
-            $name       = addslashes($tweep['name']);
+            $name       = addslashes(substr($tweep['name'], 0, 49));
             $descrip    = addslashes($tweep['description']);
             $followers  = $tweep['followers_count'];
             $friends    = $tweep['friends_count'];
@@ -124,10 +124,7 @@
         $call++;
         if ($call > 15) {
             $call = 1;
-            echo "PAUSE";
+            echo "PAUSE at $cursor and user $username\n";
             sleep(15.1*60);
         }
     }
-
-    echo "\n PAUSE before beginning next section...\n";
-    sleep(15.1*60);
